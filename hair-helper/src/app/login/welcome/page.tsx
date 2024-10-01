@@ -10,7 +10,9 @@ export default function Welcome() {
         <div className="flex h-screen">
             <div className="m-auto text-center ">
                 <h1>Welcome!</h1>
-                <Button type='button' title="login" onClick={() => route.push("./mobile")}  className="mt-8"/>
+                <Button type='button' onClick={() => route.push("/api/auth/login")}  className="mt-8">
+                    {`Login`}
+                    </Button>
             </div>
         </div>
     )

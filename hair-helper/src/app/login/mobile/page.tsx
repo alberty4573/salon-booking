@@ -23,7 +23,7 @@ export default function Mobile() {
                             <input type="text" name="mobile" />
                         </label>
                     </div>
-                    <Button type="submit" title={"submit"}>Submit</Button>
+                    <Button type="submit">Submit</Button>
                 </form>
 
             </div>

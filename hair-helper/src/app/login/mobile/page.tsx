@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/app/components/Button"
-import { FormEvent, MouseEvent } from "react"
+import { FormEvent } from "react"
 
 
 export default function Mobile() {

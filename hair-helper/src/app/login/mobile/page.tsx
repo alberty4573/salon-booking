@@ -1,5 +1,6 @@
 "use client"
 
+import { Button } from "@/app/components/Button"
 import { FormEvent } from "react"
 
 
@@ -19,7 +20,7 @@ export default function Mobile() {
                     Mobile Number:
                     <input type="text" name="mobile" />
                 </label>
-                <button type="submit">Submit</button>
+                <Button type="submit" label="Submit" />
             </form>
         </div>
     )

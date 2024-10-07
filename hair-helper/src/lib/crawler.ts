@@ -1,7 +1,6 @@
 import puppeteer from 'puppeteer';
 import * as cheerio from 'cheerio';
 
-
 export const crawler = async (url: string) => {
     const browser = await puppeteer.launch({
         args: ['--no-sandbox']
@@ -14,7 +13,7 @@ export const crawler = async (url: string) => {
     return result
 }
 
-const parse = (html) => {
+const parse = (html: string | Buffer) => {
     const $ = cheerio.load(html);
 
     const results: string[] = []

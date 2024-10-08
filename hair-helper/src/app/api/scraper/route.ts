@@ -1,6 +1,7 @@
-import { crawler } from '../../../lib/crawler';
+// import { crawler } from '../../../lib/crawler';
 
 import { NextResponse} from 'next/server'
+import { crawler } from './crawler';
 
 export async function GET(
 ) {

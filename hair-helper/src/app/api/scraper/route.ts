@@ -1,5 +1,3 @@
-// import { crawler } from '../../../lib/crawler';
-
 import { NextResponse} from 'next/server'
 import { crawler } from './crawler';
 

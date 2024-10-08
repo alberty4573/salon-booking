@@ -1,22 +1,25 @@
+'use client'
+
+import useSWR from 'swr'
+
+const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 
-export default async function EventScreen() {
+export default function EventScreen() {
+    const { data, error } = useSWR('http://localhost:3000/api/scraper', fetcher)
 
-    fetch('https://api.vercel.app/blog').then((res) => console.log
-    ("data", res.json()) );
-
-    
-    
+    if (error) return <div>Failed to load</div>
+    if (!data) return <div>Loading...</div>
+        
     return (
         <div>
-          <h1>Scraped Quotes</h1>
+          <h1>{`Here's a list of events: `}</h1>
           <ul>
-            {/* {data.map((item, index) => (
+            {data.titles.map((item, index) => (
               <li key={index}>
-                <p>"{item.text}"</p>
-                <p>— {item.author}</p>
+                <p>{item}</p>
               </li>
-            ))} */}
+            ))}
           </ul>
         </div>
       );

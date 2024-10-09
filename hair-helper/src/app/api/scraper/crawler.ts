@@ -1,15 +1,9 @@
-import * as puppeteer from 'puppeteer';
 import * as cheerio from 'cheerio';
 
 export const crawler = async (url: string) => {
-    const browser = await puppeteer.launch({
-        args: ['--no-sandbox'],
-    });
-    const page = await browser.newPage();
-    await page.goto(url);
-    const html = await page.content();
+    const res = await fetch(url)
+    const html = await res.text()
     const result = parse(html)
-    await browser.close();
     return result
 }
 

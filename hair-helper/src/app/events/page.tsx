@@ -5,7 +5,8 @@ import useSWR from 'swr'
 const fetcher = (...args: [RequestInfo, RequestInit?]) => fetch(...args).then((res) => res.json())
 
 export default function EventScreen() {
-    const { data, error } = useSWR('http://localhost:3000/api/scraper', fetcher)
+
+    const { data, error } = useSWR('api/scraper', fetcher)
 
     if (error) return <div>Failed to load</div>
     if (!data) return <div>Loading...</div>

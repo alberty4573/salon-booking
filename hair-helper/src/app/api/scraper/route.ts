@@ -1,6 +1,7 @@
 import { NextResponse} from 'next/server'
 import { crawler } from './crawler';
 import { paginationCrawler } from './paginationCrawler';
+import { StandardEvent } from '../types/event';
 
 function getOpUrl(page: number) {
   const operaUlr = `https://www.sydneyoperahouse.com/whats-on?page=${page}`;
@@ -20,16 +21,16 @@ export async function GET(
   try {
     const lastPage = await paginationCrawler(operaHouseUrl)
     const lastPageNumber = Number(lastPage)
-    const titles: string[] = []
+    const events: StandardEvent[] = []
     for (let index = 0; index < lastPageNumber; index++) {
-      const titlesFromOperaHouse = await crawler(getOpUrl(index));
-      titles.push(...titlesFromOperaHouse);
+      const eventsFromOperaHouse = await crawler(getOpUrl(index));
+      events.push(...eventsFromOperaHouse);
     }
 
-    const titlesFromCityOfSydney = await crawler(url);
-    titles.push(...titlesFromCityOfSydney)
+    // const titlesFromCityOfSydney = await crawler(url);
+    // titles.push(...titlesFromCityOfSydney)
 
-    return NextResponse.json({ titles });
+    return NextResponse.json({ events });
   } catch (error) {
     console.error('Error in API:', error);  }
 }

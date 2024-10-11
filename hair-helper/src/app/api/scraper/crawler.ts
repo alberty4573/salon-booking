@@ -1,4 +1,5 @@
 import * as cheerio from 'cheerio';
+import { StandardEvent } from '../types/event';
 
 export const crawler = async (url: string) => {
     const res = await fetch(url)
@@ -10,15 +11,28 @@ export const crawler = async (url: string) => {
 const parse = (html: string | Buffer) => {
     const $ = cheerio.load(html);
 
-    const results: string[] = []
+    const results: StandardEvent[] = []
     try {
-        $('a.event_tile-link').each((index, element) => {
-            results.push($(element).text())
+        // city of sydney
+        // $('a.event_tile-link').each((index, element) => {
+        //     results.push($(element).text())
+        // })
+
+        // opera house
+        $('div.card').each((index, element) => {
+            const result: StandardEvent = {
+                title: '',
+                url: '',
+                duration: '',
+                description: '',
+                location: '',
+            }
+            result.title = $(element).find('span.card__heading-text').text();
+            result.url = `https://www.sydneyoperahouse.com` + $(element).find('a').attr('href') || '';
+            results.push(result)
         })
 
-        $('span.card__heading-text').each((index, element) => {
-            results.push($(element).text())
-        })
+
         
     } catch (error) {
         console.log('Error parsing html:', error)

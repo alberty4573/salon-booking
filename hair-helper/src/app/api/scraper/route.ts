@@ -11,7 +11,7 @@ function getOpUrl(page: number) {
 export async function GET(
 ) {
 
-  const url = 'https://whatson.cityofsydney.nsw.gov.au/venues/sydney-opera-house';
+  // const url = 'https://whatson.cityofsydney.nsw.gov.au/venues/sydney-opera-house';
 
 
   const page = 0

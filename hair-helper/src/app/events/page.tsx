@@ -3,11 +3,11 @@
 import useSWR, { Fetcher } from 'swr'
 import { StandardEvent } from '../api/types/event'
 
-const fetcher: Fetcher<StandardEvent[]> = (...args: [RequestInfo, RequestInit?]) => fetch(...args).then((res) => res.json())
+const fetcher: Fetcher<{events: StandardEvent[]} > = (...args: [RequestInfo, RequestInit?]) => fetch(...args).then((res) => res.json())
 
 export default function EventScreen() {
 
-    const { data, error } = useSWR<StandardEvent[]>('api/scraper', fetcher)
+    const { data, error } = useSWR<{events: StandardEvent[]}>('api/scraper', fetcher)
 
     if (error) return <div>Failed to load</div>
     if (!data) return <div>Loading...</div>

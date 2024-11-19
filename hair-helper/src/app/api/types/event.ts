@@ -1,4 +1,5 @@
 export interface StandardEvent {
+    category: string
     title: string;
     url: string;
     duration: string;

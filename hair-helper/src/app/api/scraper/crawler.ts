@@ -21,14 +21,17 @@ const parse = (html: string | Buffer) => {
         // opera house
         $('div.card').each((index, element) => {
             const result: StandardEvent = {
+                category: '',
                 title: '',
                 url: '',
                 duration: '',
                 description: '',
                 location: '',
             }
+            result.category = $(element).find('p.card__category').text() || 'none';
             result.title = $(element).find('span.card__heading-text').text();
             result.url = `https://www.sydneyoperahouse.com` + $(element).find('a').attr('href') || '';
+
             results.push(result)
         })
 

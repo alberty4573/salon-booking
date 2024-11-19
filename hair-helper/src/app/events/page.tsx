@@ -20,7 +20,7 @@ export default function EventScreen() {
 
   const [sortedData, setSortedData] = useState<StandardEvent[]>([])
 
-  const [selectedKeys, setSelectedKeys] = useState([]);
+  const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
 
   const { data, error, isLoading } = useSWR<{ events: StandardEvent[] }>(
     "api/scraper",
@@ -80,7 +80,7 @@ export default function EventScreen() {
           closeOnSelect= {false}
           selectedKeys= {selectedKeys}
           onSelectionChange={(value) => {
-            setSelectedKeys(value)
+            setSelectedKeys(value as unknown as string[])
           }}
           >
           {categories.map((category) => {

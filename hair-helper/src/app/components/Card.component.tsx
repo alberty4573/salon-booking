@@ -29,7 +29,9 @@ export const EventCard = ({
         <p>
           <strong>Start Date:</strong> {startDate || 'N/A'}
         </p>
-        {/* <p><strong>End Date:</strong> {endDate || 'N/A'}</p>   */}
+        <p>
+          <strong>End Date:</strong> {endDate || 'N/A'}
+        </p>
         <p>
           <strong>URL:</strong>{' '}
           <a href={url} target="_blank" rel="noopener noreferrer">

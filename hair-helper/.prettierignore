@@ -1,0 +1,7 @@
+.git
+node_modules
+.eslintignore
+.gitignore
+cicd/
+dist/
+LICENSE

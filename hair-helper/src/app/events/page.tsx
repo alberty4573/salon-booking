@@ -505,6 +505,7 @@ export default function EventScreen() {
                           startDate={item.startDate}
                           endDate={item.endDate}
                           venue={item.venue}
+                          imageUrl={item.imageUrl}
                         />
                       </div>
                     )

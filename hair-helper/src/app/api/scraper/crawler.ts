@@ -34,9 +34,16 @@ const parse = (html: string | Buffer) => {
         venue: '',
         startDate: '',
         endDate: '',
+        imageUrl: '',
       }
       result.category = $(element).find('p.card__category').text() || 'none'
       result.title = $(element).find('span.card__heading-text').text()
+
+      const imageUrl = $(element).find('img').attr('src') || ''
+      result.imageUrl = imageUrl.startsWith('http')
+        ? imageUrl
+        : `https://www.sydneyoperahouse.com${imageUrl}`
+
       result.url =
         `https://www.sydneyoperahouse.com` +
           $(element).find('a').attr('href') || ''
